@@ -34,9 +34,13 @@
         "data-grid",
         "data-spreadsheet"
     ],
-    "version": "3.0.1",
+    "dependencies": {
+        "jsuites": "^3.4.0"
+    },
+    "main": "dist/jexcel.js",
+    "version": "4.4.1",
     "bugs": "https://github.com/paulhodel/jexcel/issues",
     "homepage": "https://github.com/paulhodel/jexcel",
-    "docs": "https://bossanova.uk/jexcel",
+    "docs": "https://bossanova.uk/jexcel/v4",
     "download": "https://github.com/paulhodel/jexcel/archive/master.zip"
 }

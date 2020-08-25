@@ -1,9 +1,9 @@
 // Based on sutoiku work (https://github.com/sutoiku)
 
 var error = (function() {
-    exports = {};
-
-    exports.nil = new Error('#NULL!');
+        var exports = {};
+    
+        exports.nil = new Error('#NULL!');
     exports.div0 = new Error('#DIV/0!');
     exports.value = new Error('#VALUE!');
     exports.ref = new Error('#REF!');
@@ -17,7 +17,7 @@ var error = (function() {
 })();
 
 var utils = (function() {
-    exports = {};
+    var exports = {};
 
     exports.flattenShallow = function(array) {
         if (!array || !array.reduce) {
@@ -4866,9 +4866,9 @@ jexcel.methods.text = (function() {
         return text.replace(/ +/g, ' ').trim();
     };
 
-    exports.UNICHAR = this.CHAR;
+    exports.UNICHAR = exports.CHAR;
 
-    exports.UNICODE = this.CODE;
+    exports.UNICODE = exports.CODE;
 
     exports.UPPER = function(text) {
         if (typeof text !== 'string') {
@@ -5529,6 +5529,32 @@ jexcel.methods.stats = (function() {
         var n = range.length;
         return 1 - exports.NORM.S.DIST((exports.AVERAGE(range) - x) / (sd / Math.sqrt(n)), true);
     };
+
+    return exports;
+})();
+
+jexcel.methods.utils = (function() {
+    var exports = {};
+
+    exports.PROGRESS = function(p, c) {
+        var color = c ? c : 'red';
+        var value = p ? p : '0';
+
+        return '<div style="width:' + value + '%;height:4px;background-color:' + color + ';margin-top:1px;"></div>';
+    };
+
+    exports.RATING = function(v) {
+        var html = '<div class="jrating">';
+        for (var i = 0; i < 5; i++) {
+            if (i < v) {
+                html += '<div class="jrating-selected"></div>';
+            } else {
+                html += '<div></div>';
+            }
+        }
+        html += '</div>';
+        return html;
+    }
 
     return exports;
 })();
